@@ -1,4 +1,3 @@
 # cursoaccenture_elisabetMartinMuriel
 
-Elisabet Martin Muriel
-Ejercicios curso Java
+Elisabet Martin Muriel, Ejercicios curso Java
