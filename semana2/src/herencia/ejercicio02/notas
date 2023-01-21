@@ -1,0 +1,5 @@
+Buen trabajo
+En PcCongelado
+no tienes setTipo, luego no es necesario super.setTipo
+Cada clase deberia implementar el mostrarinfo de sus datos y de su padre.....
+La clase que imprime, sabe lo que es, luego no necesita el NAME
