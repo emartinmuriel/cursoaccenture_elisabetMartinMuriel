@@ -1,8 +1,10 @@
 package herencia.ejercicio04;
+
 /**
  * Ejercicio III : Equipo de futbol
  * 
  * La clase Persona (clase padre)
+ * 
  * @author e.a.martin.muriel
  *
  */
@@ -11,19 +13,20 @@ public class Persona {
 	private String nombre;
 	private String apellidos;
 	private int edad;
-	
-	//Constructores
-	public Persona(){
-}
-	public Persona(int id, String nombre, String apellidos, int edad){
+
+	// Constructores
+	public Persona() {
+	}
+
+	public Persona(int id, String nombre, String apellidos, int edad) {
 		super();
-		this.id=id;
-		this.nombre=nombre;
-		this.edad=edad;
-		this.apellidos=apellidos;
-}
-	
-	//Getters -Setters
+		this.id = id;
+		this.nombre = nombre;
+		this.edad = edad;
+		this.apellidos = apellidos;
+	}
+
+	// Getters -Setters
 	public int getId() {
 		return id;
 	}
@@ -56,15 +59,14 @@ public class Persona {
 		this.edad = edad;
 	}
 
-	//Métodos de la clase
-	
+	// Métodos de la clase
+
 	public void concentrarse() {
-		System.out.println(this.getNombre() + " " + this.getApellidos() + ("está en concentración" ));
+		System.out.println(this.getNombre() + " " + this.getApellidos() + ("está en concentración"));
 	}
-	
+
 	public void viajar() {
-		System.out.println(this.nombre +("está de viaje" ));
+		System.out.println(this.nombre + ("está de viaje"));
 	}
-	
-	
+
 }
