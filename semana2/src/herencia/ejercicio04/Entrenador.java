@@ -41,7 +41,7 @@ public class Entrenador extends Persona {
 
 	public void dirigirEntrenamiento() {
 		System.out.println(
-				"El entrenador" + super.getNombre() + " " + super.getApellidos() + "Está dirigiendo el entrenamiento");
+				"El entrenador " + super.getNombre() + " " + super.getApellidos() + " está dirigiendo el entrenamiento");
 
 	}
 

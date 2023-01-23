@@ -45,7 +45,7 @@ public class Masajista extends Persona {
 
 	// Métodos
 	public void darMasaje() {
-		System.out.println("Dando masaje");
+		System.out.println(" y dando masaje");
 	}
 
 }
