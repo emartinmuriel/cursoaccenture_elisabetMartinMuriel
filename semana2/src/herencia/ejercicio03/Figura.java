@@ -1,4 +1,4 @@
-package herencia.ejericicio03;
+package herencia.ejercicio03;
 
 public abstract class Figura {
 	private int base;

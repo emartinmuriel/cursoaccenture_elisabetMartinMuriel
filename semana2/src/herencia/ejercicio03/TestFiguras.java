@@ -1,4 +1,4 @@
-package herencia.ejericicio03;
+package herencia.ejercicio03;
 /**
  * Ejercicio 3: Herencia 
  * 

@@ -1,4 +1,4 @@
-package herencia.ejericicio03;
+package herencia.ejercicio03;
 
 public class Triangulo extends Figura{
 	
