@@ -58,4 +58,9 @@ public class Coche extends Automovil implements TodoTerreno {
 		this.es4X4=activado;
 	}
 
+	@Override
+	public boolean activarReductora() {
+		return false;
+	}
+
 }
