@@ -9,7 +9,11 @@ public class Entrenador  extends Persona {
 	
 	//Constructores
 	public Entrenador() {
-		
+		super();
+	}
+	public Entrenador(int idFede) {
+		super();
+		this.idFederacion=idFede;
 	}
 	public Entrenador(int id, String nombre, String apellidos, int edad,int idFederacion ) {
 		super(id, nombre, apellidos, edad);
