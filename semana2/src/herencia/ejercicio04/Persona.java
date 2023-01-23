@@ -62,7 +62,7 @@ public class Persona {
 	// Métodos de la clase
 
 	public void concentrarse() {
-		System.out.println(this.getNombre() + " " + this.getApellidos() + ("está en concentración"));
+		System.out.println(this.getNombre() + " " + this.getApellidos() + (" está en concentración"));
 	}
 
 	public void viajar() {
