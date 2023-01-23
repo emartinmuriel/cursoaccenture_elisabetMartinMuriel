@@ -12,6 +12,11 @@ public class TestFiguras {
 		Circulo cir = new Circulo(12);
 		Cuadrado cua = new Cuadrado(12);
 		
+		//Inicializando punto de origen de alguna de las figuras
+		cua.setPuntoOrigen(new Punto(3,4));
+		cua.setInfoFigura(new Metadato("Cuadrado", "Ejemplo de cuadrado"));
+		System.out.println("Las coordenas del punto son: x: "+ cua.getPuntoOrigen().getCoordenadaX() + " , y: "+cua.getPuntoOrigen().getCoordenadaY());
+		
 		
 		//Calcular las areas
 		

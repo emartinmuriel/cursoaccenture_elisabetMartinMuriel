@@ -54,13 +54,12 @@ public class Coche extends Automovil implements TodoTerreno {
 	}
 	
 	//Implementar el método de la interfaz
+	@Override
 	public void activarReductora(boolean activado) {
 		this.es4X4=activado;
 	}
 
-	@Override
-	public boolean activarReductora() {
-		return false;
-	}
+	
+
 
 }
