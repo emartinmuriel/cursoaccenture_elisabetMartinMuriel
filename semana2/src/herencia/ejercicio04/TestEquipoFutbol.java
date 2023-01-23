@@ -13,7 +13,7 @@ public class TestEquipoFutbol {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		ArrayList<Persona> equipoFutbol = new ArrayList<Persona>();
+		ArrayList<Persona> equipoFutbol = new ArrayList<Persona>(); //Se puede declarar como List para castear diferentes tipos de colleciones si necesito
 
 		// Instanciacion de objetos e inclusión en array list
 		Futbolista p1 = new Futbolista(1, "Chimy", "Avila", 32, 9, "Delantero");
