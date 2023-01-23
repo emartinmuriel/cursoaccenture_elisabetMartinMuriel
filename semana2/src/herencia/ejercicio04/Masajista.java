@@ -21,4 +21,8 @@ public class Masajista extends Persona{
 		this.titulacion=titulacion;
 		this.aniosExperiencia=aExperiencia;
 	}
+	
+	public void darMasaje() {
+		System.out.println("Está dando masaje");
+	}
 }
