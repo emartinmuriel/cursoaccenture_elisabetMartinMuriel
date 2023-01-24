@@ -32,7 +32,7 @@ public class Debito extends Tarjeta {
 	@Override
 	public void retirar(double cantidad) {
 		LocalDate fecha = LocalDate.now();
-		Movimiento retirada = new Movimiento("Retirada", fecha, cantidad);
+		Movimiento retirada = new Movimiento("Retirada", fecha, cantidad *(-1.00));
 
 		super.getCuentaAsociada().addMovimiento(retirada);
 	}
@@ -40,7 +40,7 @@ public class Debito extends Tarjeta {
 	@Override
 	public void pagoEstablecimiento(String concepto, int cantidad) {
 		LocalDate fecha = LocalDate.now();
-		Movimiento pago = new Movimiento("Pago Establecimiento", fecha, cantidad);
+		Movimiento pago = new Movimiento("Pago Establecimiento", fecha, cantidad *(-1.00));
 
 		super.getCuentaAsociada().addMovimiento(pago);
 	}

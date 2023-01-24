@@ -61,7 +61,7 @@ public class Credito extends Tarjeta{
 			System.out.println("Error: Límite de crédito excedido. Crédito disponible " + this.getSaldo() + " Euros");
 		}else {
 			LocalDate fecha = LocalDate.now();
-			Movimiento retirada = new Movimiento("Retirada", fecha, cantidad *(-1));
+			Movimiento retirada = new Movimiento("Retirada", fecha, cantidad *(-1.00));
 			this.movimientos.add(retirada);
 		}
 
@@ -73,7 +73,7 @@ public class Credito extends Tarjeta{
 			System.out.println("Error: Límite de crédito excedido. Crédito disponible " + this.getSaldo()+ " Euros");
 		}else {
 			LocalDate fecha = LocalDate.now();
-			Movimiento retirada = new Movimiento("Retirada", fecha, cantidad *(-1));
+			Movimiento retirada = new Movimiento("Retirada", fecha, cantidad *(-1.00));
 			this.movimientos.add(retirada);
 		}
 	}

@@ -104,7 +104,7 @@ public class Cuenta {
 	 */
 	public void retirar(double cantidad) {
 		LocalDate fecha = LocalDate.now();
-		Movimiento retirada = new Movimiento("Retirada", fecha, cantidad);
+		Movimiento retirada = new Movimiento("Retirada", fecha, cantidad *(-1.00));
 
 		this.addMovimiento(retirada);
 	}
@@ -116,7 +116,7 @@ public class Cuenta {
 	 */
 	public void retirar(String concepto, double cantidad) {
 		LocalDate fecha = LocalDate.now();
-		Movimiento retirada = new Movimiento(concepto, fecha, cantidad);
+		Movimiento retirada = new Movimiento(concepto, fecha, cantidad *(-1.00));
 		this.addMovimiento(retirada);
 		
 	}
