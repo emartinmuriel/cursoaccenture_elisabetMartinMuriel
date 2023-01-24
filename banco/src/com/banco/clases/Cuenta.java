@@ -18,13 +18,14 @@ public class Cuenta {
 	// constructores
 	public Cuenta() {
 		super();
-
+		this.movimientos= new Vector<Movimiento>();
 	}
 
 	public Cuenta(String numero, String titular) {
 		super();
 		this.numero = numero;
 		this.titular = titular;
+		this.movimientos= new Vector<Movimiento>();
 	}
 
 	// Getters &Setters

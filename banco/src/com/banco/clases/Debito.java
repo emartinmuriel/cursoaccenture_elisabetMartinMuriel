@@ -11,9 +11,13 @@ import java.time.LocalDate;
 public class Debito extends Tarjeta {
 	
 	//Constructor 
+	
+	public Debito() {
+		super();
+	}
+
 	public Debito(LocalDate fechaCaducidad, String numero, String titular) {
 		super(fechaCaducidad, numero, titular);
-		
 	}
 
 	@Override
@@ -21,7 +25,6 @@ public class Debito extends Tarjeta {
 		return  super.getCuentaAsociada().getSaldo();
 	
 	}
-
 	@Override
 	public void ingresar(double cantidad) {
 		LocalDate fecha = LocalDate.now();
@@ -38,7 +41,7 @@ public class Debito extends Tarjeta {
 	}
 
 	@Override
-	public void pagoEstablecimiento(String concepto, int cantidad) {
+	public void pagoEstablecimiento(String concepto, double cantidad) {
 		LocalDate fecha = LocalDate.now();
 		Movimiento pago = new Movimiento("Pago Establecimiento", fecha, cantidad *(-1.00));
 

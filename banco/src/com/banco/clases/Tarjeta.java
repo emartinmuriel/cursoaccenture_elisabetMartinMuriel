@@ -37,6 +37,6 @@ public abstract class Tarjeta {
 	public abstract double getSaldo();
 	public abstract void ingresar(double cantidad);
 	public abstract void retirar (double cantidad);
-	public abstract void pagoEstablecimiento(String concepto,int cantidad);
+	public abstract void pagoEstablecimiento(String concepto,double cantidad);
 
 }
