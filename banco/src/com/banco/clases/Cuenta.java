@@ -80,10 +80,7 @@ public class Cuenta {
 	 * @param cantidad
 	 */
 	public void ingresar(double cantidad) {
-		LocalDate fecha = LocalDate.now();
-		Movimiento ingreso = new Movimiento("Ingreso", fecha, cantidad);
-
-		this.addMovimiento(ingreso);
+		this.ingresar("Ingreso", cantidad);
 	}
 
 	/**
@@ -103,10 +100,7 @@ public class Cuenta {
 	 * @param cantidad
 	 */
 	public void retirar(double cantidad) {
-		LocalDate fecha = LocalDate.now();
-		Movimiento retirada = new Movimiento("Retirada", fecha, cantidad *(-1.00));
-
-		this.addMovimiento(retirada);
+		this.retirar("Retirada", cantidad);
 	}
 
 	/**

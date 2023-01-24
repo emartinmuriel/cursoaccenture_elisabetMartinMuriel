@@ -1,9 +1,17 @@
 package com.banco.main;
-
+import com.banco.clases.*;
+/**
+ * Ejercicio Banco, clase TestBanco
+ * @author e.a.martin.muriel
+ *
+ */
 public class TestBanco {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		//Creamos una cuenta
+		Cuenta micuenta = new Cuenta();
+		
 
 	}
 
