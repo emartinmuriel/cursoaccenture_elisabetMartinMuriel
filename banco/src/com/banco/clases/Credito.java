@@ -1,10 +1,9 @@
 package com.banco.clases;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Vector;
+import com.banco.constans.*;
 
 /**
  * La clase Crédito que hereda de la clase abstracta Tarjeta
@@ -68,8 +67,8 @@ public class Credito extends Tarjeta {
 
 	@Override
 	public void retirar(double cantidad) { // la cantidad siempre viene en positivo
-
-		double comision = cantidad * 0.03;
+		double porcentajeInteres= Constans.INTERES_TIPO_5/100;
+		double comision = cantidad * porcentajeInteres;
 		if (comision < 3.00) {
 			comision = 3.00;
 		}
