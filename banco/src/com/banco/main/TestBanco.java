@@ -54,14 +54,16 @@ public class TestBanco {
 		miTCredito.pagoEstablecimiento("Carrefour", 20);
 		
 		//Vemos el saldo de la cuenta y de la tarjeta de credito
-		
-		System.out.println("EL saldo disponible de la Tarjeta de Crédito es " + miTCredito.getSaldo() + " Euros");
-		System.out.println("EL saldo de la cuenta " + miCuenta.getNumero() + " es " + miCuenta.getSaldo() + " Euros");
-		
+
+		System.out.println(miCuenta.toString());
+		System.out.println(miTCredito.toString());
 		//Ahora vamos a liquidar lo que hemos cargado
 		miTCredito.liquidar(1, 2023);
-		System.out.println("EL saldo de la cuenta " + miCuenta.getNumero() + " es " + miCuenta.getSaldo() + " Euros");
-		System.out.println("EL saldo disponible de la Tarjeta de Crédito es " + miTCredito.getSaldo() + " Euros");
+
+		System.out.println("<<< DESPUES DE LIQUIDAR TARJETA DE CRÉDITO... >>>");
+		System.out.println(miCuenta.toString());
+		System.out.println(miTCredito.toString());
+		
 	}
 
 }

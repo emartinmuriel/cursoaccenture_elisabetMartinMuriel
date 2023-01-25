@@ -8,10 +8,10 @@ import java.time.LocalDate;
  *
  */
 public abstract class Tarjeta {
-	private Cuenta cuentaAsociada;
-	private LocalDate fechaCaducidad;
-	private String numero;
-	private String titular;
+	protected Cuenta cuentaAsociada;
+	protected LocalDate fechaCaducidad;
+	protected String numero;
+	protected String titular;
 	//Constructores 
 	protected Tarjeta() {
 		super();

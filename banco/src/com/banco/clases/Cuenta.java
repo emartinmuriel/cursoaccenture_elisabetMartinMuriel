@@ -18,14 +18,14 @@ public class Cuenta {
 	// constructores
 	public Cuenta() {
 		super();
-		this.movimientos= new Vector<Movimiento>();
+		this.movimientos = new Vector<Movimiento>();
 	}
 
 	public Cuenta(String numero, String titular) {
 		super();
 		this.numero = numero;
 		this.titular = titular;
-		this.movimientos= new Vector<Movimiento>();
+		this.movimientos = new Vector<Movimiento>();
 	}
 
 	// Getters &Setters
@@ -64,13 +64,14 @@ public class Cuenta {
 
 	/**
 	 * EL método getSaldo
+	 * 
 	 * @return El saldo actual de la cuenta
 	 */
 	public double getSaldo() {
 		double saldo = 0;
 		for (Movimiento movimiento : this.movimientos) {
-			if (movimiento!=null) {
-				saldo+= movimiento.getImporte();
+			if (movimiento != null) {
+				saldo += movimiento.getImporte();
 			}
 		}
 		return saldo;
@@ -111,8 +112,28 @@ public class Cuenta {
 	 */
 	public void retirar(String concepto, double cantidad) {
 		LocalDate fecha = LocalDate.now();
-		Movimiento retirada = new Movimiento(concepto, fecha, cantidad *(-1.00));
+		Movimiento retirada = new Movimiento(concepto, fecha, cantidad * (-1.00));
 		this.addMovimiento(retirada);
-		
+
+	}
+
+	// Métodos toString
+
+	@Override
+	public String toString() {
+		String res = "DATOS DE LA CUENTA\n_______________________________________\n Numero de Cuenta: "
+				+ this.getNumero() + "\n Titular: " + this.getTitular() + "\nSaldo :" + this.getSaldo();
+		res += "\n ********** Movimientos en Cuenta ********** ";
+
+		// Metemos movimientos
+		if (this.movimientos.isEmpty()) {
+			res += "\n** No hay movimientos en cuenta";
+		} else {
+			for (Movimiento mov : this.movimientos) {
+				res += "\n" + mov.toString();
+			}
+			res += "\n ****************************************";
+		}
+		return res;
 	}
 }

@@ -67,7 +67,7 @@ public class Credito extends Tarjeta {
 
 	@Override
 	public void retirar(double cantidad) { // la cantidad siempre viene en positivo
-		double porcentajeInteres= Constans.INTERES_TIPO_5/100;
+		double porcentajeInteres = Constans.INTERES_TIPO_5 / 100;
 		double comision = cantidad * porcentajeInteres;
 		if (comision < 3.00) {
 			comision = 3.00;
@@ -119,21 +119,30 @@ public class Credito extends Tarjeta {
 
 		}
 
-		for (int i = 0; i < this.movimientos.size(); i++) {
-			Movimiento movimiento = this.movimientos.elementAt(i);
-			if (movimiento != null && movimiento.getFecha().getMonthValue() == mes
-					&& movimiento.getFecha().getYear() == anio) {
-				creditoConsumido += movimiento.getImporte(); // Añado al crédito consumido
-
-				// Ahora elimina el movimiento del vector
-				this.movimientos.remove(i);
-			}
-		}
-
 		LocalDate fecha = LocalDate.now();
 		Movimiento liquidacionTarjeta = new Movimiento("Liquidación Tarjeta", fecha, creditoConsumido);
 
 		super.getCuentaAsociada().addMovimiento(liquidacionTarjeta); // añade el movimiento en liquidación a la tarjeta}
+	}
+
+	@Override
+	public String toString() {
+		String res = "DATOS DE LA TARJETA DE CREDITO\n_______________________________________\n Numero de tarjeta: "
+				+ super.numero + "\n Titular de la tarjeta: " + super.titular + "\nCuenta Asociada :"
+				+ super.cuentaAsociada.getNumero() + "\nFecha de caducidad: " + super.fechaCaducidad + "\nLimite de Crédito:"
+				+ this.credito + "\nCredito disponible: " + this.getSaldo();
+		res += "\n ********** Movimientos Pendientes de Liquidación ********** ";
+
+		// Metemos movimientos
+		if (this.movimientos.isEmpty()) {
+			res += "\n** No hay movimientos pendientes";
+		} else {
+			for (Movimiento mov : this.movimientos) {
+				res += "\n" + mov.toString();
+			}
+			res += "\n ****************************************";
+		}
+		return res;
 	}
 
 }
