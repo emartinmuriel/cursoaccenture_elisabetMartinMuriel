@@ -9,6 +9,7 @@ package com.banco.excepciones;
 public class ValidationException extends RuntimeException {
 
 	String message;
+	
 
 	public ValidationException() {
 		this.message = "Ha ocurrido una excepción de tipo ValidationException.";
@@ -19,9 +20,10 @@ public class ValidationException extends RuntimeException {
 		this.message = message;
 
 	}
+	
 
-	public void show() {
-		System.out.println("ValidationException Error: " + this.message);
+	public String mostrar() {
+		return "ValidationException Error: " + this.message;
 	}
 
 }

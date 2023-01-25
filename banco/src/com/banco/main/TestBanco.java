@@ -3,6 +3,7 @@ package com.banco.main;
 import java.time.LocalDate;
 
 import com.banco.clases.*;
+import com.banco.excepciones.ValidationException;
 
 /**
  * Ejercicio Banco, clase TestBanco
@@ -63,6 +64,15 @@ public class TestBanco {
 		System.out.println("<<< DESPUES DE LIQUIDAR TARJETA DE CRÉDITO... >>>");
 		System.out.println(miCuenta.toString());
 		System.out.println(miTCredito.toString());
+		
+		//Vamos a lanzar excepciones
+		try {
+			miCuenta.ingresar(-300);
+		}
+		catch (ValidationException e) {
+			System.out.println(e.mostrar());
+		}
+	
 		
 	}
 

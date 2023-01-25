@@ -16,7 +16,7 @@ public class FiltrosBanco {
 	 */
 	public static boolean longitudTitular(String titular) {
 		boolean valido = false;
-		if (Filtro.maxLength(titular, FiltrosConstants.MIN_CHAR_TITULAR)
+		if (Filtro.minLength(titular, FiltrosConstants.MIN_CHAR_TITULAR)
 				&& Filtro.maxLength(titular, FiltrosConstants.MAX_CHAR_TITULAR)) {
 			valido = true;
 		}
