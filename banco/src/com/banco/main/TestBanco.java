@@ -12,7 +12,7 @@ import com.banco.clases.*;
  */
 public class TestBanco {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		// Creamos una cuenta
 		Cuenta miCuenta = new Cuenta("1111222233334444", "Elisabet Martin Muriel");

@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.Vector;
 import com.banco.constans.*;
+import com.banco.excepciones.ValidationException;
+import com.banco.filtros.FiltrosBanco;
 
 /**
  * La clase Crédito que hereda de la clase abstracta Tarjeta
@@ -58,7 +60,8 @@ public class Credito extends Tarjeta {
 	}
 
 	@Override
-	public void ingresar(double cantidad) {
+	public void ingresar(double cantidad) throws ValidationException {
+		FiltrosBanco.cantidadPositiva(cantidad); // Lanzará una excepción
 		LocalDate fecha = LocalDate.now();
 		Movimiento ingreso = new Movimiento("Ingreso", fecha, cantidad);
 		this.movimientos.add(ingreso);
@@ -66,7 +69,10 @@ public class Credito extends Tarjeta {
 	}
 
 	@Override
-	public void retirar(double cantidad) { // la cantidad siempre viene en positivo
+	public void retirar(double cantidad) throws ValidationException { // la cantidad siempre viene en positivo
+
+		FiltrosBanco.cantidadPositiva(cantidad); // Lanzará una excepción
+
 		double porcentajeInteres = Constans.INTERES_TIPO_5 / 100;
 		double comision = cantidad * porcentajeInteres;
 		if (comision < 3.00) {
@@ -85,9 +91,12 @@ public class Credito extends Tarjeta {
 	}
 
 	@Override
-	public void pagoEstablecimiento(String concepto, double cantidad) {
+	public void pagoEstablecimiento(String concepto, double cantidad) throws ValidationException {
+		FiltrosBanco.cantidadPositiva(cantidad); // Lanzará una excepción
+
 		if (this.getSaldo() < cantidad) {
-			System.out.println("Error: Límite de crédito excedido. Crédito disponible " + this.getSaldo() + " Euros");
+			throw new ValidationException(
+					"Límite de crédito excedido. Crédito disponible " + this.getSaldo() + " Euros");
 		} else {
 			LocalDate fecha = LocalDate.now();
 			Movimiento retirada = new Movimiento("Compra a Crédito en " + concepto, fecha, cantidad * (-1.00));
@@ -129,8 +138,8 @@ public class Credito extends Tarjeta {
 	public String toString() {
 		String res = "DATOS DE LA TARJETA DE CREDITO\n_______________________________________\n Numero de tarjeta: "
 				+ super.numero + "\n Titular de la tarjeta: " + super.titular + "\nCuenta Asociada :"
-				+ super.cuentaAsociada.getNumero() + "\nFecha de caducidad: " + super.fechaCaducidad + "\nLimite de Crédito:"
-				+ this.credito + "\nCredito disponible: " + this.getSaldo();
+				+ super.cuentaAsociada.getNumero() + "\nFecha de caducidad: " + super.fechaCaducidad
+				+ "\nLimite de Crédito:" + this.credito + "\nCredito disponible: " + this.getSaldo();
 		res += "\n ********** Movimientos Pendientes de Liquidación ********** ";
 
 		// Metemos movimientos

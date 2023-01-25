@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Vector;
 
+import com.banco.excepciones.ValidationException;
+import com.banco.filtros.FiltrosBanco;
+
 /**
  * La clase Cuenta
  * 
@@ -21,11 +24,16 @@ public class Cuenta {
 		this.movimientos = new Vector<Movimiento>();
 	}
 
-	public Cuenta(String numero, String titular) {
+	public Cuenta(String numero, String titular) throws ValidationException {
 		super();
-		this.numero = numero;
-		this.titular = titular;
-		this.movimientos = new Vector<Movimiento>();
+		if (FiltrosBanco.longitudTitular(titular)) {
+
+			this.numero = numero;
+			this.titular = titular;
+			this.movimientos = new Vector<Movimiento>();
+		} else {
+			throw new ValidationException("La longitud del campo \"Titular\" no es correcta");
+		}
 	}
 
 	// Getters &Setters
@@ -81,7 +89,7 @@ public class Cuenta {
 	 * 
 	 * @param cantidad
 	 */
-	public void ingresar(double cantidad) {
+	public void ingresar(double cantidad) throws Exception {
 		this.ingresar("Ingreso", cantidad);
 	}
 
@@ -90,10 +98,11 @@ public class Cuenta {
 	 * @param concepto
 	 * @param cantidad
 	 */
-	public void ingresar(String concepto, double cantidad) {
+	public void ingresar(String concepto, double cantidad) throws Exception {
+
+		FiltrosBanco.cantidadPositiva(cantidad); // Lanzará una excepción
 		LocalDate fecha = LocalDate.now();
 		Movimiento ingreso = new Movimiento(concepto, fecha, cantidad);
-
 		this.addMovimiento(ingreso);
 	}
 
@@ -101,7 +110,7 @@ public class Cuenta {
 	 * 
 	 * @param cantidad
 	 */
-	public void retirar(double cantidad) {
+	public void retirar(double cantidad) throws Exception {
 		this.retirar("Retirada", cantidad);
 	}
 
@@ -110,7 +119,8 @@ public class Cuenta {
 	 * @param concepto
 	 * @param cantidad
 	 */
-	public void retirar(String concepto, double cantidad) {
+	public void retirar(String concepto, double cantidad) throws Exception {
+		FiltrosBanco.cantidadPositiva(cantidad); // Lanzará una excepción
 		LocalDate fecha = LocalDate.now();
 		Movimiento retirada = new Movimiento(concepto, fecha, cantidad * (-1.00));
 		this.addMovimiento(retirada);
