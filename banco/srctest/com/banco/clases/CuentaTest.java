@@ -2,20 +2,28 @@ package com.banco.clases;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class CuentaTest {
+	String titular = "Elisabet Martin Muriel";
+	String numeroCuenta = "1111222233334444";
+	Cuenta cuentaTest = new Cuenta(numeroCuenta, titular);
 
 	@Test
-	void testCuentaStringString() {
-		fail("Not yet implemented");
+	void testCuentaStringString1() {
+
+		assertNotNull(cuentaTest);
 	}
 
+	@Disabled
 	@Test
 	void testGetMovimientos() {
 		fail("Not yet implemented");
 	}
 
+	@Disabled
 	@Test
 	void testSetMovimientos() {
 		fail("Not yet implemented");
@@ -23,22 +31,29 @@ class CuentaTest {
 
 	@Test
 	void testGetNumero() {
-		fail("Not yet implemented");
+		assertEquals(numeroCuenta, cuentaTest.getNumero());
 	}
+
 
 	@Test
 	void testSetNumero() {
-		fail("Not yet implemented");
+		String numCuenta = "0000222255557777";
+		Cuenta miCuenta = new Cuenta(numCuenta,titular);
+		miCuenta.setNumero(numCuenta);
+		assertEquals(numCuenta, miCuenta.getNumero());
 	}
 
 	@Test
 	void testGetTitular() {
-		fail("Not yet implemented");
+		assertEquals(titular, cuentaTest.getTitular());
 	}
 
 	@Test
 	void testSetTitular() {
-		fail("Not yet implemented");
+		String tit = "0000222255557777";
+		Cuenta otraCuenta = new Cuenta(numeroCuenta,tit);
+		otraCuenta.setTitular(tit);
+		assertEquals(tit, otraCuenta.getTitular());
 	}
 
 	@Test
