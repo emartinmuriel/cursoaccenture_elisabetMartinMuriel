@@ -1,6 +1,7 @@
 package com.banco.filtros;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * La clase Filtro. Esta clase provee varios métodos para validar entradas de
@@ -98,6 +99,25 @@ public class Filtro {
 			valida = true;
 		}
 		return valida;
+	}
+	/**
+	 * Comprueba si el formato entrada de fecha es correcto
+	 * Se puede no indicar el formato y asumirá "dd-mm-YYYY"
+	 * @param fecha
+	 * @param String (formato)
+	 * @return : LocalDate con la Fecha o null
+	 */
+	public static LocalDate validaFormatoFecha (LocalDate fecha, String formato) {
+		
+		fecha.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+		DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern(formato);
+		//
+		String cadFecha = fecha.format(formatoFecha);
+		LocalDate fvalida = LocalDate.parse(cadFecha);
+		return fvalida;
+	}
+	public static LocalDate validaFormatoFecha (LocalDate fecha) {
+		return validaFormatoFecha ( fecha, "dd-mm-YYYY");
 	}
 
 }
