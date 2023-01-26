@@ -59,7 +59,10 @@ public class TestBanco {
 		System.out.println(miCuenta.toString());
 		System.out.println(miTCredito.toString());
 		//Ahora vamos a liquidar lo que hemos cargado
-		miTCredito.liquidar(1, 2023);
+		
+		//miTCredito.liquidar(1, 2023);
+		
+		miTCredito.liquidarStreams(1, 2023);
 
 		System.out.println("<<< DESPUES DE LIQUIDAR TARJETA DE CRÉDITO... >>>");
 		System.out.println(miCuenta.toString());
