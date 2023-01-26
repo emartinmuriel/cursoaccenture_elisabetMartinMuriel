@@ -1,8 +1,13 @@
 package com.banco.clases;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import com.banco.constans.*;
 import com.banco.excepciones.ValidationException;
 import com.banco.filtros.FiltrosBanco;
@@ -132,6 +137,42 @@ public class Credito extends Tarjeta {
 		Movimiento liquidacionTarjeta = new Movimiento("Liquidación Tarjeta", fecha, creditoConsumido);
 
 		super.getCuentaAsociada().addMovimiento(liquidacionTarjeta); // añade el movimiento en liquidación a la tarjeta}
+	}
+
+	/**
+	 * Método liquidarStreams. Hace los mismo que liquidar pero implementando el uso
+	 * de Streams
+	 * 
+	 * @param mes
+	 * @param anio
+	 */
+	public void liquidarStreams(int mes, int anio) {
+		double creditoConsumido = 0.0;
+
+		// Haciendolo con streams
+		creditoConsumido = this.movimientos.stream()
+				.filter(e -> e.getFecha().getYear() == anio && e.getFecha().getYear() == mes) // primero filtro los
+																								// movimientos de la
+																								// fecha
+				.map(Movimiento::getImporte) // tomo el importe de cada uno
+				.reduce(0d, (subTotal, importeMov) -> subTotal + importeMov); // importeMov es cada elemento que filtra
+																				// del map
+
+		// Recuperar los vectores a Eliminar
+		List<Movimiento> listMovAEliminar = this.movimientos.stream()
+				.filter(e -> e.getFecha().getYear() == anio && e.getFecha().getYear() == mes) // primero filtro los
+																								// movimientos de la
+																								// fecha
+				.collect(Collectors.toList());
+
+		// Agregar la nueva lista de vectores
+		Vector<Movimiento> vecMovEliminar = new Vector<Movimiento>(listMovAEliminar);
+		this.movimientos.removeAll(vecMovEliminar);
+
+		LocalDate fecha = LocalDate.now();
+		Movimiento liquidacionTarjeta = new Movimiento("Liquidación Tarjeta", fecha, creditoConsumido);
+
+		super.getCuentaAsociada().addMovimiento(liquidacionTarjeta);
 	}
 
 	@Override

@@ -2,7 +2,11 @@ package com.banco.clases;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Arrays;
+import java.util.Optional;
 import java.util.Vector;
+import java.util.function.BinaryOperator;
+import java.util.stream.Stream;
 
 import com.banco.excepciones.ValidationException;
 import com.banco.filtros.FiltrosBanco;
@@ -76,12 +80,16 @@ public class Cuenta {
 	 * @return El saldo actual de la cuenta
 	 */
 	public double getSaldo() {
-		double saldo = 0;
-		for (Movimiento movimiento : this.movimientos) {
-			if (movimiento != null) {
-				saldo += movimiento.getImporte();
-			}
-		}
+		double saldo = 0.0;
+		/*
+		 * for (Movimiento movimiento : this.movimientos) { if (movimiento != null) {
+		 * saldo += movimiento.getImporte(); } }
+		 */
+
+		// Haciendolo con streams
+		saldo = this.movimientos.stream().map(Movimiento::getImporte).reduce(0d,
+				(subTotal, importeMov) -> subTotal + importeMov); // importeMov es cada elemento que filtra del map
+
 		return saldo;
 	}
 

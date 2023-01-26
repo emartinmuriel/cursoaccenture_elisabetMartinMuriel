@@ -57,10 +57,18 @@ class CuentaTest {
 	}
 
 	@Test
-	void testAddMovimiento() {
+	void testAddMovimiento1() {
 		fail("Not yet implemented");
 	}
 
+	@Test
+	void testAddMovimiento2() {
+		fail("Not yet implemented");
+	}
+	@Test
+	void testAddMovimiento3() {
+		fail("Not yet implemented");
+	}
 	@Test
 	void testGetSaldo() {
 		fail("Not yet implemented");
