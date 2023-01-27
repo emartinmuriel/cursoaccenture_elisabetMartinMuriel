@@ -1,6 +1,6 @@
 package es.rf.tienda.dominio;
 
-
+import es.rf.tienda.util.Validator;
 
 /**
  * 
