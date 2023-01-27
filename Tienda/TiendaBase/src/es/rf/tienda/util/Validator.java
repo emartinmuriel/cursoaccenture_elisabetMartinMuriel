@@ -64,12 +64,31 @@ public class Validator {
 	 * AUTOR: Miguel Garcia - Barcelona
 	 * 
 	 * **************************************************************************************/
-	public static boolean isAlfanumeric(String texto){
-		return true;
+	public static boolean isAlfanumeric(String texto) {
+		boolean alfanumerico = true;
+		char car;
+		for (int i = 0; i <= texto.length() - 1; i++) {
+			car = texto.charAt(i);
+			if (!Character.isLetterOrDigit(car)) {
+				alfanumerico = false;
+			}
+		}
+		return alfanumerico;
 	}
-	
-	public static boolean isVacio( String prueba ){
-		return true;
+
+	/**
+	 * Metodo isVacio
+	 * 
+	 * @param prueba
+	 * @return boolean
+	 */
+
+	public static boolean isVacio(String prueba) {
+		boolean vacio = false;
+		if (prueba.length() < 1) {
+			vacio = true;
+		}
+		return vacio;
 	}
 	
 	/* ***************************************************************************************
