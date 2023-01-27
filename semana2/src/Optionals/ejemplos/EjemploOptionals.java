@@ -24,7 +24,7 @@ public class EjemploOptionals {
 		System.out.println(Optional.ofNullable(cad).orElse("Como es cad es nulo,Pues entonces este valor"));
 		
 		
-		//
+		//Jugando con fechas
 		LocalDate fecha = LocalDate.of(2001, 9, 1);
 		System.out.println(fecha.getDayOfWeek());
 		System.out.println(fecha.getMonthValue());
