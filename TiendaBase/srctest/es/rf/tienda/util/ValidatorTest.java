@@ -31,7 +31,9 @@ class ValidatorTest {
 	final int INT_1= 1;
 	final int INT_3= 3;
 	final int INT_9= 9;
-	final double DOUBLE_3= 3.5;
+	final double DOUBLE_1= 1.0;
+	final double DOUBLE_3= 3.0;
+	final double DOUBLE_9= 9.0;
 
 
 	@Test
@@ -151,10 +153,26 @@ class ValidatorTest {
 
 	@Disabled
 	@Test
+	void testCumpleRangoDoubleIntInt_1() {
+		assertTrue(Validator.cumpleRango(DOUBLE_3,INT_1,INT_9));
+	}
+	@Test
+	void testCumpleRangoDoubleIntInt_2() {
+		assertTrue(Validator.cumpleRango(DOUBLE_3, INT_3,INT_3));
+	}
+	@Test
+	void testCumpleRangoDoubleIntInt_3() {
+		assertFalse(Validator.cumpleRango(DOUBLE_1, INT_3,INT_9));
+	}
+	@Test
+	void testCumpleRangoDoubleIntInt_4() {
+		assertFalse(Validator.cumpleRango(DOUBLE_9, INT_1,INT_3));
+	}
+	@Disabled
+	@Test
 	void testCumpleRangoDoubleIntInt() {
 		fail("Not yet implemented");
 	}
-
 	@Disabled
 	@Test
 	void testCumpleLongitudMin() {
