@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  * la aplicaci�n.
  * 
  * @version 30/01/2023
- * @author Miguel Garcia
+ * @author Elisabet Martin
  * 
  ******************************************************************************************/
 public class Validator {
@@ -61,7 +61,7 @@ public class Validator {
 		 * @return true, si cumple solo contiene caracters alfanum�ricos. <br>
 		 *         false en caso contrario FECHA: Enero 2023
 		 * 
-		 *         AUTOR: Miguel Garcia - Barcelona
+		 *         AUTOR: Elisabet Martin
 		 * 
 		 **************************************************************************************/
 	public static boolean isAlfanumeric(String texto) {
@@ -80,11 +80,8 @@ public class Validator {
 	 */
 
 	public static boolean isVacio(String prueba) {
-		boolean vacio = false;
-		if (prueba.length() < 1) {
-			vacio = true;
-		}
-		return vacio;
+		return prueba == null || prueba.isEmpty();
+
 	}
 
 	/*
@@ -102,13 +99,23 @@ public class Validator {
 		 * 
 		 * @return true, si cumple todas las condiciones
 		 *
-		 *         FECHA: Enero 2023 AUTOR: Miguel Garcia
+		 *         FECHA: Enero 2023 AUTOR: Elisabet Martin
 		 * 
 		 **************************************************************************************/
 	public static boolean cumplePhoneNumber(String phoneNumber) {
 		Pattern pattern = Pattern.compile(PHONE_PATTERN, Pattern.CASE_INSENSITIVE);
 		Matcher matcher = pattern.matcher(phoneNumber);
-		return matcher.find();
+		boolean valido = false;
+
+		if (matcher.find()) { // Cumple la expresión regular: blancos+digitos>10 && blancos+digitos<20
+
+			String soloDig = phoneNumber.replace(" ", "");
+			if (soloDig.length() >= 10) {
+				valido = true;
+			}
+		}
+
+		return valido;
 
 	}
 
@@ -124,7 +131,7 @@ public class Validator {
 		 * 
 		 * @return true, en caso que el formato sea v�lido FECHA: Enero 2023
 		 * 
-		 *         AUTOR: Miguel Garcia
+		 *         AUTOR: Elisabet Martin
 		 * 
 		 **************************************************************************************/
 	public static boolean isEmailValido(String email) {
@@ -146,13 +153,17 @@ public class Validator {
 		 * @param dni String con DNI a ser validado
 		 * 
 		 * @return true, si el DNI cumple el estandar nacional. FECHA: Enero 2023 AUTOR:
-		 *         Miguel Garcia
+		 *         Elisabet Martin
 		 * 
 		 **************************************************************************************/
 	public static boolean cumpleDNI(String dni) {
-		Pattern pattern = Pattern.compile(DNI_PATTERN, Pattern.CASE_INSENSITIVE);
-		Matcher matcher = pattern.matcher(dni);
-		return matcher.find();
+		/*
+		 * Pattern pattern = Pattern.compile(DNI_PATTERN, Pattern.CASE_INSENSITIVE);
+		 * Matcher matcher = pattern.matcher(dni); boolean cumple= matcher.find();
+		 */
+		// Como curiosidad otra manera de hacerlo
+
+		return dni.matches(DNI_PATTERN);
 
 	}
 
@@ -170,17 +181,18 @@ public class Validator {
 	 * @param valorMaximo (int) M�N�mero valor aceptable
 	 * 
 	 * @return true si valorMinimo > valor > valorMaximo FECHA: Enero 2023 AUTOR:
-	 *         Miguel Garcia
+	 *         Elisabet Martin
 	 * 
 	 **************************************************************************************/
 	public static boolean cumpleRango(int valor, int valorMinimo, int valorMaximo) {
 
-		return true;
+		return valor >= valorMinimo && valor <= valorMaximo;
 
 	}
 
 	public static boolean cumpleRango(double valor, int valorMinimo, int valorMaximo) {
-		return true;
+
+		return cumpleRango((int) valor, valorMinimo, valorMaximo);
 
 	}
 
@@ -197,7 +209,7 @@ public class Validator {
 		 * @param longitudMinima int que indique longitud m�nima.
 		 * 
 		 * @return cierto, si la longitud del texto es mayor o igual que longitudMinima
-		 *         FECHA: Enero 2023 AUTOR: Miguel Garcia
+		 *         FECHA: Enero 2023 AUTOR: Elisabet Martin
 		 * 
 		 **************************************************************************************/
 	public static boolean cumpleLongitudMin(String texto, int longitudMinima) {
@@ -222,7 +234,7 @@ public class Validator {
 		 * @param longitudMaxima int con la longitud m�xima del texto
 		 * 
 		 * @return true, si el texto es menor o igual que la longitud m�xima. FECHA:
-		 *         Enero 2023 AUTOR: Miguel Garcia
+		 *         Enero 2023 AUTOR: Elisabet Martin
 		 * 
 		 **************************************************************************************/
 	public static boolean cumpleLongitudMax(String texto, int longitudMaxima) {
@@ -247,8 +259,8 @@ public class Validator {
 	 * @param longitudMaxima (int) M�xima longitud v�lida para el texo
 	 * 
 	 * @return true, si la longitud del texto cumple: longitudMinima <=
-	 *         longitudTexto <=longitudMaxima FECHA: Enero 2023 AUTOR: Miguel Garcia
-	 *         - Barcelona
+	 *         longitudTexto <=longitudMaxima FECHA: Enero 2023 AUTOR: Elisabet
+	 *         Martin
 	 * 
 	 **************************************************************************************/
 	public static boolean cumpleLongitud(String texto, int longitudMinima, int longitudMaxima) {
@@ -268,9 +280,9 @@ public class Validator {
 	 */
 
 	public static boolean valDateMin(LocalDate fecha, LocalDate min) {
-		boolean valido=false;
+		boolean valido = false;
 		if (fecha.isAfter(min)) {
-			valido=true;
+			valido = true;
 		}
 		return valido;
 
@@ -284,9 +296,9 @@ public class Validator {
 	 * @return
 	 */
 	public static boolean valDateMax(LocalDate fecha, LocalDate max) {
-		boolean valido=false;
+		boolean valido = false;
 		if (fecha.isBefore(max)) {
-			valido=true;
+			valido = true;
 		}
 		return valido;
 
@@ -300,15 +312,15 @@ public class Validator {
 	 * @return
 	 */
 	public static boolean esFechaValida(String fecha) {
-		boolean valido=false;
+		boolean valido = false;
 		DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/mm/aaaa");
 		try {
 			LocalDate fechaNueva = LocalDate.parse(fecha, formatoFecha);
-			valido=false;
-		}catch (DateTimeParseException e) {
-			
+			valido = false;
+		} catch (DateTimeParseException e) {
+
 		}
-		
+
 		return valido;
 
 	}
@@ -320,8 +332,7 @@ public class Validator {
 	 * @param password string con la contrase�a introducida
 	 * @return true si cumple con las especificaciones
 	 * 
-	 *         Especificacion:
-	 * 
+	 *         Especificacion: Autor: Elisabet Martin
 	 */
 	public static boolean esPasswordValida(String password) {
 		Pattern pattern = Pattern.compile(PASSWORD_PATTERN, Pattern.CASE_INSENSITIVE);
