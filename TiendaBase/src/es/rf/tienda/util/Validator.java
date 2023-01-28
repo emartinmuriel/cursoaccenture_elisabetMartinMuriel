@@ -157,13 +157,26 @@ public class Validator {
 		 * 
 		 **************************************************************************************/
 	public static boolean cumpleDNI(String dni) {
-		/*
-		 * Pattern pattern = Pattern.compile(DNI_PATTERN, Pattern.CASE_INSENSITIVE);
-		 * Matcher matcher = pattern.matcher(dni); boolean cumple= matcher.find();
-		 */
-		// Como curiosidad otra manera de hacerlo
+		boolean valido = false;
+		int num;
+		String sNum = "";
 
-		return dni.matches(DNI_PATTERN);
+		if (dni.matches(DNI_PATTERN)) { // Primer filtro-> cumple patrón
+
+			for (int i = 0; i < LONGITUD_DNI - 2; i++) {
+				if (Character.isDigit(dni.charAt(i))) { // Estraer los numéricos
+					sNum += dni.charAt(i);
+				}
+			}
+
+			num = Integer.parseInt(sNum); // Cast a entero
+
+			if (LETRA_DNI.charAt(num % 23) == dni.charAt(LONGITUD_DNI - 1)) { // Compara la letra
+				valido = true;
+			}
+		}
+
+		return valido;
 
 	}
 
@@ -281,7 +294,7 @@ public class Validator {
 
 	public static boolean valDateMin(LocalDate fecha, LocalDate min) {
 		boolean valido = false;
-		if (fecha.isAfter(min)) {
+		if (fecha.isAfter(min) || fecha.isEqual(min)) {
 			valido = true;
 		}
 		return valido;
@@ -297,7 +310,7 @@ public class Validator {
 	 */
 	public static boolean valDateMax(LocalDate fecha, LocalDate max) {
 		boolean valido = false;
-		if (fecha.isBefore(max)) {
+		if (fecha.isBefore(max) || fecha.isEqual(max)) {
 			valido = true;
 		}
 		return valido;
@@ -312,13 +325,12 @@ public class Validator {
 	 * @return
 	 */
 	public static boolean esFechaValida(String fecha) {
-		boolean valido = false;
-		DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/mm/aaaa");
+		boolean valido = true;
+		DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		try {
 			LocalDate fechaNueva = LocalDate.parse(fecha, formatoFecha);
-			valido = false;
 		} catch (DateTimeParseException e) {
-
+			valido = false;
 		}
 
 		return valido;
