@@ -18,6 +18,8 @@ import java.util.regex.Pattern;
  ******************************************************************************************/
 public class Validator {
 
+	
+	private static final String CODPRODUCTO_PATTERN = "^[A-Z]{2}[\\d]{3}+$";
 	private static final String ALFANUMERIC_PATTERN = "^[0-9a-zA-Z]+$";
 
 	private static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
@@ -350,6 +352,20 @@ public class Validator {
 		Pattern pattern = Pattern.compile(PASSWORD_PATTERN, Pattern.CASE_INSENSITIVE);
 		Matcher matcher = pattern.matcher(password);
 		return matcher.find();
+
+	}
+	
+	/**
+	 * El método esCodigoProductoValido. Comprueba que el código cumpla con el patrón. 
+	 * Patron: AA000 (5char: 2 Letras mayúsculas+3 digitos.
+	 * 
+	 * @param password string con el código de Producto
+	 * @return true si cumple con las especificaciones
+	 * 
+	 *         Especificacion: Autor: Elisabet Martin
+	 */
+	public static boolean esCodigoProductoValido(String codProducto) {
+		return codProducto.matches(CODPRODUCTO_PATTERN);
 
 	}
 }
