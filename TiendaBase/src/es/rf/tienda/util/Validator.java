@@ -368,4 +368,5 @@ public class Validator {
 		return codProducto.matches(CODPRODUCTO_PATTERN);
 
 	}
+
 }

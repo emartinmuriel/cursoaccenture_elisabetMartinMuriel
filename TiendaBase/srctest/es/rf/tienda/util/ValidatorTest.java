@@ -54,7 +54,7 @@ class ValidatorTest {
 	final String PWD_ERROR1_NO_CHAR_ESP = "ContraVA123";
 	final String PWD_ERROR2_NO_CAP = "contra_va123";
 	final String PWD_ERROR3_NO_DIG = "Contra_VAddsj";
-	
+
 	final String CODPROD_VALIDO = "AA000";
 	final String CODPROD_ERROR1 = "Aa000";
 	final String CODPROD_ERROR2 = "A1239";
@@ -367,24 +367,20 @@ class ValidatorTest {
 	void testEsPasswordValida4() {
 		assertFalse(Validator.esFechaValida(PWD_ERROR3_NO_DIG));
 	}
-	
-	@Test 
+
+	@Test
 	void testEsCodigoProductoValido1() {
 		assertTrue(Validator.esCodigoProductoValido(CODPROD_VALIDO));
 	}
 
-	@Test 
+	@Test
 	void testEsCodigoProductoValido2() {
 		assertFalse(Validator.esCodigoProductoValido(CODPROD_ERROR1));
 		assertFalse(Validator.esCodigoProductoValido(CODPROD_ERROR2));
 		assertFalse(Validator.esCodigoProductoValido(CODPROD_ERROR3));
 		assertFalse(Validator.esCodigoProductoValido(CODPROD_ERROR4_CORTO));
 		assertFalse(Validator.esCodigoProductoValido(CODPROD_ERROR5_LARGO));
-		
+
 	}
-
-
-	
-
 
 }
