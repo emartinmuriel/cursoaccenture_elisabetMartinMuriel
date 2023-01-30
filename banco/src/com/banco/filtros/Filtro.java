@@ -2,6 +2,7 @@ package com.banco.filtros;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
  * La clase Filtro. Esta clase provee varios métodos para validar entradas de
@@ -69,7 +70,7 @@ public class Filtro {
 	 * @return booleano
 	 */
 	public static boolean fechaMaxima(LocalDate fecha, LocalDate fMax) {
-		return fecha.isBefore(fMax);
+		return fecha.isBefore(fMax) || fecha.isEqual(fMax);
 	}
 
 	/**
@@ -80,7 +81,7 @@ public class Filtro {
 	 * @return booleano
 	 */
 	public static boolean fechaMinima(LocalDate fecha, LocalDate fMin) {
-		return fecha.isAfter(fMin);
+		return fecha.isAfter(fMin) || fecha.isEqual(fMin);
 
 	}
 
@@ -94,30 +95,30 @@ public class Filtro {
 	 * @return
 	 */
 	public static boolean fechaValida(LocalDate fecha, LocalDate fMin, LocalDate fMax) {
-		boolean valida = false;
-		if ((fecha.isAfter(fMin) || fecha.isEqual(fMin)) && (fecha.isBefore(fMax) || fecha.isEqual(fMax))) {
-			valida = true;
-		}
-		return valida;
+
+		return fechaMinima(fecha, fMin) && fechaMaxima(fecha, fMax);
 	}
+
 	/**
-	 * Comprueba si el formato entrada de fecha es correcto
-	 * Se puede no indicar el formato y asumirá "dd-mm-YYYY"
-	 * @param fecha
+	 * Comprueba si el formato entrada de fecha es correcto Se puede no indicar el
+	 * formato y asumirá "dd-mm-YYYY"
+	 * 
+	 * @param String fecha
 	 * @param String (formato)
 	 * @return : LocalDate con la Fecha o null
 	 */
-	public static LocalDate validaFormatoFecha (LocalDate fecha, String formato) {
-		
-		fecha.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+	public static LocalDate validaFormatoFecha(String fecha, String formato) {
 		DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern(formato);
-		//
-		String cadFecha = fecha.format(formatoFecha);
-		LocalDate fvalida = LocalDate.parse(cadFecha);
-		return fvalida;
+		try {
+			return LocalDate.parse(fecha, formatoFecha);
+		} catch (DateTimeParseException e) {
+			return null;
+		}
+
 	}
-	public static LocalDate validaFormatoFecha (LocalDate fecha) {
-		return validaFormatoFecha ( fecha, "dd-mm-YYYY");
+
+	public static LocalDate validaFormatoFecha(String fecha) {
+		return validaFormatoFecha(fecha, "dd-mm-YYYY");
 	}
 
 }
