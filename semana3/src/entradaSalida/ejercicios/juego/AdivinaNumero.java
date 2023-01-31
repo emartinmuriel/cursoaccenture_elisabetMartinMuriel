@@ -1,4 +1,5 @@
 package entradaSalida.ejercicios.juego;
+
 /**
  * Ejercicio de clase. Adivinar numero de 0 a 100. 
  */
@@ -13,7 +14,9 @@ public class AdivinaNumero {
 		boolean aciertoUsuario = false;
 		Random aleatorio = new Random();
 		int num = aleatorio.nextInt(100);
-		int resUsu, min = 0, max = 100;
+		int resUsu;
+		int min = 0;
+		int max = 100;
 		int resMaq = -1;
 		String res;
 
@@ -67,8 +70,9 @@ public class AdivinaNumero {
 				} while (!res.equals("S") && !res.equals("M") && !res.equals("R"));
 
 			}
-		} while (aciertoUsuario == false && aciertoMaquina == false);
+		} while (!aciertoUsuario && !aciertoMaquina);
 
+		entrada.close(); // Cerrar Scanner
 	}
 
 }
