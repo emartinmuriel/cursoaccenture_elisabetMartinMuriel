@@ -1,6 +1,5 @@
 package entradaSalida.ejercicios.juego;
 
-import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -27,32 +26,29 @@ public class AdivinaNumero {
 			entrada.nextLine();
 			if (resUsu == num) {
 				System.out.println("oleeeee! has acertado");
-				aciertoUsuario = true;  //Termina el juego
+				aciertoUsuario = true; // Termina el juego
 			} else {
 
 				// Respuesta al usuario
 				if (resUsu < num) {
 
 					System.out.println("Tira más arriba");
-				}else {
+				} else {
 					System.out.println("Tira más abajo");
 				}
-		
 
 				// turno para adivinar el numero del usuario
 				if (resMaq < 0) {
 					resMaq = aleatorio.nextInt(100);
 				} else {
-					resMaq = aleatorio.nextInt(min+1, max);
+					resMaq = aleatorio.nextInt(min + 1, max);
 				}
-
-			
 
 				do {
 					System.out.print("\nTu numero es " + resMaq + "?? [S]i  [M]ayor  meno[R]  >> ");
 					res = entrada.next();
 					entrada.nextLine();
-					
+
 					System.out.println(res);
 					switch (res) {
 					case "S":
