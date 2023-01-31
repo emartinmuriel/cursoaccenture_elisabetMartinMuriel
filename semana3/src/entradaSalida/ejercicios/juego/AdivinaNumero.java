@@ -51,7 +51,6 @@ public class AdivinaNumero {
 					res = entrada.next();
 					entrada.nextLine();
 
-					System.out.println(res);
 					switch (res) {
 					case "S":
 						aciertoUsuario = true; // Termina juego
