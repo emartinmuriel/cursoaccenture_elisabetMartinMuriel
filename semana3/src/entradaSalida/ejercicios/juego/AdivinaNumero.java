@@ -1,5 +1,7 @@
 package entradaSalida.ejercicios.juego;
-
+/**
+ * Ejercicio de clase. Adivinar numero de 0 a 100. 
+ */
 import java.util.Random;
 import java.util.Scanner;
 
