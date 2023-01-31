@@ -8,7 +8,7 @@ public class AdivinaNumeroConMetodos {
 	static boolean aciertoUsuario = false;
 	static Random aleatorio = new Random();
 	static int num = aleatorio.nextInt(100);
-	static int min = 0;
+	static int min = 1;
 	static int max = 100;
 
 	static Scanner entrada = new Scanner(System.in); // preparamos la entrada
