@@ -46,9 +46,10 @@ public class AdivinaNumero {
 					resMaq = aleatorio.nextInt(min+1, max);
 				}
 
-				System.out.print("\nTu numero es " + resMaq + "?? [S]i  [M]ayor  meno[R]  >> ");
+			
 
 				do {
+					System.out.print("\nTu numero es " + resMaq + "?? [S]i  [M]ayor  meno[R]  >> ");
 					res = entrada.next();
 					entrada.nextLine();
 					
