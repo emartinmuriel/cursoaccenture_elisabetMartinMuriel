@@ -5,16 +5,12 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Partida partida= new Partida();
+		Partida nuevaPartida= new Partida();
 		
-		Baraja mano = new Baraja();
+		nuevaPartida.start(); //Empieza la partida
 		
-		mano.barajarMazo();
-		int i = 0;
-		for (Carta carta : mano.mazo) {
-			i++;
-			System.out.println(i + ">> " + carta.toString());
-		}
+		nuevaPartida.listaBaraja();  
+		nuevaPartida.listaJugadores();
 	}
 
 }

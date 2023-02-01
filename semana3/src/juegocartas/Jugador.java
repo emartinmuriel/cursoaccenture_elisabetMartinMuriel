@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Jugador {
 	private String nombre;
-	private String edad;
+	private int edad;
 	private Set<Carta> misCartas = new HashSet<Carta>();
 
 	public String getNombre() {
@@ -16,11 +16,11 @@ public class Jugador {
 		this.nombre = nombre;
 	}
 
-	public String getEdad() {
+	public int getEdad() {
 		return edad;
 	}
 
-	public void setEdad(String edad) {
+	public void setEdad(int edad) {
 		this.edad = edad;
 	}
 	/**
