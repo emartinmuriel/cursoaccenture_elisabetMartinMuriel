@@ -32,7 +32,18 @@ public class Jugador {
 	public void addCarta(Carta carta) {
 		this.misCartas.add(carta);
 	}
-
+	/**
+	 * Metodo: ejecutarJugada;
+	 */
+	public void ejecutarJugada () {
+		
+	}
+	/**
+	 * Metodo: ejecutarJugada;
+	 */
+	public void descartarCarta () {
+		
+	}
 	/**
 	 * Metodo : listarJugador. Imprime por pantalla Los datos del jugador y sus
 	 * cartas

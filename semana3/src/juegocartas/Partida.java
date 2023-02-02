@@ -46,15 +46,15 @@ public class Partida {
 	}
 
 	/**
-	 * Metodo: imprimeEstadoPartida. Imprime por consola los datos de los jugadores que
-	 * componen la partida y sus cartas asociadas.
+	 * Metodo: imprimeEstadoPartida. Imprime por consola los datos de los jugadores
+	 * que componen la partida y sus cartas asociadas.
 	 */
 	public void imprimeEstadoPartida() {
 		System.out.println("--------------------- Estado de la mano --------------------");
 		for (Jugador jug : this.jugadores) {
 			jug.listarJugador();
 		}
-		System.out.println("---------------------------------------------------------------");
+		System.out.println("------------------------------------------------------------");
 	}
 
 	/**
@@ -80,8 +80,14 @@ public class Partida {
 
 	}
 
+	/**
+	 * Metodo rondaDescartes. Este método recorre la "mesa de Jugadores" en orden,
+	 * para que cada jugador ejecute su jugada.
+	 */
 	public void rondaDescartes() {
-
+		for (Jugador jug : this.jugadores) {
+			jug.ejecutarJugada();
+		}
 	}
 
 	/**
