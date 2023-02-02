@@ -10,7 +10,7 @@ import java.util.Set;
  *
  */
 public class Baraja {
-	static String[] palos = { "ORO", "COPAS", "ESPADAS", "BASTOS" };
+	static String[] palos = { "PICAS    ", "CORAZONES", "DIAMANTES", "TREBOLES " };
 	Set<Carta> mazo = new HashSet<Carta>();
 
 	/**
