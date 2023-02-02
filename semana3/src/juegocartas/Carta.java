@@ -22,9 +22,14 @@ public class Carta {
 
 	public void pintaCarta() {
 		System.out.println("  ___________________");
-		System.out.println(" |                   |");
-		System.out.println(" |  " + this.num + "  " + this.palo + "    |");
-		System.out.println(" |                   |");
+//		System.out.println(" |                   |");
+		if (this.num < 10) {
+			System.out.println(" |   " + this.num + "  " + this.palo + "    |");
+		} else {
+			System.out.println(" |  " + this.num + "  " + this.palo + "    |");
+		}
+
+//		System.out.println(" |                   |");
 		System.out.println("  ___________________");
 
 	}

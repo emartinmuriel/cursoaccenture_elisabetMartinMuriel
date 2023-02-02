@@ -13,7 +13,6 @@ public class Main {
 		nuevaPartida.listaJugadores();
 		nuevaPartida.reparteCartas(5);
 		nuevaPartida.imprimeEstadoPartida();
-
 	}
 
 }
