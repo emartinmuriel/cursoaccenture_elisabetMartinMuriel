@@ -6,4 +6,5 @@
  *
  */
 module semana3 {
+	requires java.sql;
 }
