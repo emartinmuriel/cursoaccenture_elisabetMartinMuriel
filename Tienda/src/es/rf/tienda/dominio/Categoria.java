@@ -1,5 +1,7 @@
 package es.rf.tienda.dominio;
 
+import es.rf.tienda.constants.Constants;
+import es.rf.tienda.constants.ErrorConstans;
 import es.rf.tienda.exception.DomainException;
 import es.rf.tienda.util.Validator;
 
@@ -61,10 +63,10 @@ public class Categoria {
 	 */
 	public void setCat_nombre(String cat_nombre) throws DomainException {
 
-		if (Validator.cumpleLongitud(cat_nombre, 6, 49)) {
+		if (Validator.cumpleLongitud(cat_nombre, Constants.LONG_MIN_6, Constants.LONG_MAX_49)) {
 			this.cat_nombre = cat_nombre;
 		} else {
-			throw new DomainException("Longitud no Válida para Descripción");
+			throw new DomainException(ErrorConstans.ERR_LONGITUD_CATEGORIA);
 		}
 
 	}
@@ -84,10 +86,10 @@ public class Categoria {
 	 */
 	public void setCat_descripcion(String cat_descripcion) throws DomainException {
 
-		if (Validator.cumpleLongitud(cat_descripcion, 0, 200)) {
+		if (Validator.cumpleLongitud(cat_descripcion, Constants.LONG_MIN_1, Constants.LONG_MAX_200)) {
 			this.cat_descripcion = cat_descripcion;
 		} else {
-			throw new DomainException("Longitud no Válida para Descripción");
+			throw new DomainException(ErrorConstans.ERR_LONGITUD_CATEGORIA);
 		}
 
 	}
